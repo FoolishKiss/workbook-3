@@ -1,0 +1,31 @@
+package com.pluralsight;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class BedtimeStoriesApp {
+    public static void main(String[] args) {
+        Scanner userInput = new Scanner(System.in);
+
+        //
+        System.out.println("Enter the name of the story: ");
+        String bedtimeStory = userInput.nextLine();
+
+        try {
+            FileInputStream stories = new FileInputStream("src/main/resources/" + bedtimeStory);
+            Scanner fileScanner = new Scanner(stories);
+
+            int lineNumber = 1;
+            while(fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+                System.out.println(lineNumber + ": " + fileScanner.nextLine());
+                lineNumber++;
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found buddy.");
+        }
+
+    }
+}

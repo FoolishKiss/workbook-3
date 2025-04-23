@@ -8,17 +8,19 @@ public class BedtimeStoriesApp {
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
 
-        //
+        //ask user what story
         System.out.println("Enter the name of the story: ");
+        //stores user input in variable bedtimeStory
         String bedtimeStory = userInput.nextLine();
 
         try {
+            //opens file and passes it to scanner
             FileInputStream stories = new FileInputStream("src/main/resources/" + bedtimeStory);
+            //
             Scanner fileScanner = new Scanner(stories);
 
             int lineNumber = 1;
             while(fileScanner.hasNextLine()) {
-                String line = fileScanner.nextLine();
                 System.out.println(lineNumber + ": " + fileScanner.nextLine());
                 lineNumber++;
             }

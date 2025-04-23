@@ -1,9 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,15 +52,14 @@ public class PayrollCalculatorApp {
             System.out.println("\n Enter name of file to create");
             String createdFile = userInput.nextLine();
             //starts
-            FileWriter writer = new FileWriter(createdFile);
-
-            writer.write("id|name|gross pay\n");
+            BufferedWriter bufWriter = new BufferedWriter(new FileWriter(createdFile));
+            bufWriter.write("id|name|gross pay\n");
             //loops through list and prints out in formated string
             for (Employee e : employees) {
-                writer.write(String.format("%d|%s|%.2f\n", e.getEmployeeID(), e.getName(), e.getGrossPay()));
+                bufWriter.write(String.format("%d|%s|%.2f\n", e.getEmployeeID(), e.getName(), e.getGrossPay()));
             }
             //stops the file writer
-            writer.close();
+            bufWriter.close();
             //tells user they created a file
             System.out.println("Payroll file written to: " + createdFile);
 

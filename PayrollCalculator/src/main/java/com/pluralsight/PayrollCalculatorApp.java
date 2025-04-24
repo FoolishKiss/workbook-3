@@ -1,7 +1,6 @@
 package com.pluralsight;
 
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -41,7 +40,9 @@ public class PayrollCalculatorApp {
 
                 //builds the employee
                 Employee employee = new Employee(Integer.parseInt(parts[0]), parts[1], Double.parseDouble(parts[2]), Double.parseDouble(parts[3]));
+                //adds employee to employees list
                 employees.add(employee);
+                //prints out formated employee list
                 System.out.printf("ID: %d - Name: %s - Gross Pay: $%.2f\n", employee.getEmployeeID(), employee.getName(), employee.getGrossPay());
 
             }
@@ -50,8 +51,9 @@ public class PayrollCalculatorApp {
 
             //ask user if they want to create a new file
             System.out.println("\n Enter name of file to create");
+            //stores user input in createdFile
             String createdFile = userInput.nextLine();
-            //starts
+            //starts buffered writer
             BufferedWriter bufWriter = new BufferedWriter(new FileWriter(createdFile));
             bufWriter.write("id|name|gross pay\n");
             //loops through list and prints out in formated string

@@ -38,7 +38,7 @@ public class PayrollCalculatorApp {
                 double hoursWorked = Double.parseDouble(parts[2]);
                 double payRate = Double.parseDouble(parts[3]);
 
-                //builds the employee
+                //builds the employee using the parts from lineParts
                 Employee employee = new Employee(Integer.parseInt(parts[0]), parts[1], Double.parseDouble(parts[2]), Double.parseDouble(parts[3]));
                 //adds employee to employees list
                 employees.add(employee);
